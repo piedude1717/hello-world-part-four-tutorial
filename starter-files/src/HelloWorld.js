@@ -17,10 +17,16 @@ const HelloWorld = () => {
   const [message, setMessage] = useState("No connection to the network."); //default message
   const [newMessage, setNewMessage] = useState("");
 
-  //called only once
-  useEffect(async () => {
-    
-  }, []);
+
+  useEffect(() => {
+    async function fetchMessage() {
+        const message = await loadCurrentMessage();
+        setMessage(message);
+    }
+    fetchMessage();
+}, []);
+
+
 
   function addSmartContractListener() { //TODO: implement
     
